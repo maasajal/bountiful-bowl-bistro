@@ -24,7 +24,7 @@ const NavBar = () => {
   );
   return (
     <>
-      <header className="navbar py-4 md:px-14 bg-[#15151580] text-white font-extrabold">
+      <header className="navbar py-4 md:px-14 bg-[#15151580] text-white font-extrabold fixed z-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

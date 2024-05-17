@@ -1,7 +1,7 @@
 const Ready = () => {
   return (
     <>
-      <h2>Ready Component</h2>
+      <h2>Reade now Component</h2>
     </>
   );
 };
