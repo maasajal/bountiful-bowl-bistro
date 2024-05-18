@@ -3,6 +3,7 @@ import Category from "./Category/Category";
 import ChefRecommends from "./ChefRecommends/ChefRecommends";
 import Featured from "./Featured/Featured";
 import PopularMenu from "./PopularMenu/PopularMenu";
+import Testimonials from "./Testimonials/Testimonials";
 
 const Home = () => {
   return (
@@ -20,6 +21,9 @@ const Home = () => {
         <ChefRecommends />
       </div>
       <Featured />
+      <div className="max-w-6xl mx-auto px-2 md:px-4 py-16">
+        <Testimonials />
+      </div>
     </>
   );
 };
