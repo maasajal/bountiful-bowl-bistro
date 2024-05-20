@@ -6,8 +6,19 @@ import dessertBg from "../../assets/menu/dessert-bg.jpeg";
 import pizzaBg from "../../assets/menu/pizza-bg.jpg";
 import saladBg from "../../assets/menu/salad-bg.jpg";
 import soupBg from "../../assets/menu/soup-bg.jpg";
+import useMenu from "../../hooks/useMenu";
+import SectionTitle from "../../components/SectionTitle";
+import MenuCategory from "./MenuCategory/MenuCategory";
 
 const Menu = () => {
+  const [menu] = useMenu();
+
+  const offered = menu.filter((item) => item.category === "offered");
+  const dessert = menu.filter((item) => item.category === "dessert");
+  const pizza = menu.filter((item) => item.category === "pizza");
+  const salad = menu.filter((item) => item.category === "salad");
+  const soup = menu.filter((item) => item.category === "soup");
+
   return (
     <>
       <Cover
@@ -17,35 +28,46 @@ const Menu = () => {
         style="pt-24"
       />
       <div className="max-w-6xl mx-auto px-2 md:px-4 py-16">
-        <PopularMenu />
-        <Cover
-          bgCoverImg={dessertBg}
-          title="Desserts"
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+        <section>
+          <SectionTitle heading={"Today's Offer"} subHeading={"Don't miss"} />
+          <MenuCategory items={offered} />
+        </section>
+        <section className="my-24 space-y-12">
+          <Cover
+            bgCoverImg={dessertBg}
+            title="Desserts"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
               voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-        />
-        <PopularMenu />
-        <Cover
-          bgCoverImg={pizzaBg}
-          title="Pizzas"
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+          />
+          <MenuCategory items={dessert} />
+        </section>
+        <section className="my-24 space-y-12">
+          <Cover
+            bgCoverImg={pizzaBg}
+            title="Pizzas"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
               voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-        />
-        <PopularMenu />
-        <Cover
-          bgCoverImg={saladBg}
-          title="Salads"
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+          />
+          <MenuCategory items={pizza} />
+        </section>
+        <section className="my-24 space-y-12">
+          <Cover
+            bgCoverImg={saladBg}
+            title="Salads"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
               voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-        />
-        <PopularMenu />
-        <Cover
-          bgCoverImg={soupBg}
-          title="Soups"
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+          />
+          <MenuCategory items={salad} />
+        </section>
+        <section className="my-24 space-y-12">
+          <Cover
+            bgCoverImg={soupBg}
+            title="Soups"
+            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
               voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-        />
-        <PopularMenu />
+          />
+          <MenuCategory items={soup} />
+        </section>
       </div>
     </>
   );
