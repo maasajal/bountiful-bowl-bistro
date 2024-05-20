@@ -17,8 +17,8 @@ const NavBar = () => {
       <li key="menu" className="hover:text-[#EEFF25]">
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
-      <li key="shop" className="hover:text-[#EEFF25]">
-        <NavLink to="/shop">Our Shop</NavLink>
+      <li key="order" className="hover:text-[#EEFF25]">
+        <NavLink to="/order">Order Food</NavLink>
       </li>
     </>
   );

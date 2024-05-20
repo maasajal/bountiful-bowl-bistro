@@ -23,8 +23,8 @@ const Menu = () => {
     <>
       <Cover
         bgCoverImg={banner}
-        title="Our Menu"
-        content="Would you like to try a dish?"
+        heading="Our Menu"
+        headingText="Would you like to try a dish?"
         style="pt-24"
       />
       <div className="max-w-6xl mx-auto px-2 md:px-4 py-16">
