@@ -14,7 +14,7 @@ import SectionTitle from "../../../components/SectionTitle";
 
 const Category = () => {
   return (
-    <div className="">
+    <div className="mb-10">
       <SectionTitle
         heading={"Order Online"}
         subHeading={"From 11:00am to 10:00pm"}

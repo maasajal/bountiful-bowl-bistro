@@ -8,17 +8,17 @@ const NavBar = () => {
       <li key="home" className="hover:text-[#EEFF25]">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li key="contact-us" className="hover:text-[#EEFF25]">
-        <NavLink to="/contact-us">Contact Us</NavLink>
+      <li key="contact" className="hover:text-[#EEFF25]">
+        <NavLink to="/contact">Contact Us</NavLink>
       </li>
       <li key="dashboard" className="hover:text-[#EEFF25]">
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
-      <li key="our-menu" className="hover:text-[#EEFF25]">
-        <NavLink to="/our-menu">Our Menu</NavLink>
+      <li key="menu" className="hover:text-[#EEFF25]">
+        <NavLink to="/menu">Our Menu</NavLink>
       </li>
-      <li key="our-shop" className="hover:text-[#EEFF25]">
-        <NavLink to="/our-shop">Our Shop</NavLink>
+      <li key="shop" className="hover:text-[#EEFF25]">
+        <NavLink to="/shop">Our Shop</NavLink>
       </li>
     </>
   );
