@@ -18,7 +18,7 @@ const NavBar = () => {
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
       <li key="order" className="hover:text-[#EEFF25]">
-        <NavLink to="/order">Order Food</NavLink>
+        <NavLink to="/order/salad">Order Food</NavLink>
       </li>
     </>
   );

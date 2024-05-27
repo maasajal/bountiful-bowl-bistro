@@ -7,7 +7,7 @@ const useMenu = () => {
 
   const getMenu = async () => {
     try {
-      const { data } = await axios.get("./menu.json");
+      const { data } = await axios.get("http://localhost:5555/menu");
       setMenu(data);
       setLoading(false);
     } catch (error) {

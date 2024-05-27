@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import Cover from "../Shared/Cover/Cover";
 import PopularMenu from "../Home/PopularMenu/PopularMenu";
 
@@ -33,40 +34,16 @@ const Menu = () => {
           <MenuCategory items={offered} />
         </section>
         <section className="my-24 space-y-12">
-          <Cover
-            bgCoverImg={dessertBg}
-            title="Desserts"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-              voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-          />
-          <MenuCategory items={dessert} />
+          <MenuCategory items={dessert} img={dessertBg} title="dessert" />
         </section>
         <section className="my-24 space-y-12">
-          <Cover
-            bgCoverImg={pizzaBg}
-            title="Pizzas"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-              voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-          />
-          <MenuCategory items={pizza} />
+          <MenuCategory items={pizza} img={pizzaBg} title="pizza" />
         </section>
         <section className="my-24 space-y-12">
-          <Cover
-            bgCoverImg={saladBg}
-            title="Salads"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-              voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-          />
-          <MenuCategory items={salad} />
+          <MenuCategory items={salad} img={saladBg} title="salad" />
         </section>
         <section className="my-24 space-y-12">
-          <Cover
-            bgCoverImg={soupBg}
-            title="Soups"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-              voluptate facere, deserunt dolores maiores quod nobis quas quasi."
-          />
-          <MenuCategory items={soup} />
+          <MenuCategory items={soup} img={soupBg} title="soup" />
         </section>
       </div>
     </>
