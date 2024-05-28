@@ -2,7 +2,17 @@ import { Link, NavLink } from "react-router-dom";
 import profilePic from "../../../assets/logo.png";
 import logo from "../../../assets/bbb-logo.png";
 import "./Navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        console.log("LouOut");
+      })
+      .catch((error) => console.error(error));
+  };
   const navLinks = (
     <>
       <li key="home" className="hover:text-[#EEFF25]">
@@ -54,51 +64,63 @@ const NavBar = () => {
             <img src={logo} alt="company logo" />
           </a>
         </div>
-        <div className="navbar items-center justify-end gap-2 md:gap-4">
-          <ul className="menu menu-horizontal px-1 hidden lg:flex uppercase">
+        <div className="navbar items-center justify-end gap-1 md:gap-2">
+          <ul className="menu menu-horizontal hidden lg:flex uppercase">
             {navLinks}
           </ul>
           <div className="w-10 rounded-full">
             <img src={profilePic} alt="Cart" />
           </div>
-          <Link
-            to="/login"
-            className="btn btn-outline px-5 text-white font-extrabold"
-          >
-            Login
-          </Link>
-          <Link
-            to="/"
-            className="btn btn-outline px-5 text-white font-extrabold"
-          >
-            Sign Out
-          </Link>
-          <div className="dropdown dropdown-end mr-1 tooltip tooltip-bottom tooltip-primary z-10">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img src={profilePic} alt="Logged user photo" />
+          {user ? (
+            <>
+              <Link
+                to="/"
+                onClick={handleSignOut}
+                className="btn btn-outline px-3 text-white font-extrabold"
+              >
+                Sign Out
+              </Link>
+              <div className="dropdown dropdown-end mr-1 tooltip tooltip-bottom tooltip-primary z-10">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img src={profilePic} alt="Logged user photo" />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52"
+                >
+                  <li>
+                    <NavLink
+                      to="/user-profile"
+                      className="py-3 hover:text-white"
+                    >
+                      User Profile
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/update-profile"
+                      className="py-3 hover:text-white"
+                    >
+                      Update Profile
+                    </NavLink>
+                  </li>
+                </ul>
               </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52"
+            </>
+          ) : (
+            <Link
+              to="/login"
+              className="btn btn-outline px-3 text-white font-extrabold"
             >
-              <li>
-                <NavLink to="/user-profile" className="py-3 hover:text-white">
-                  User Profile
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/update-profile" className="py-3 hover:text-white">
-                  Update Profile
-                </NavLink>
-              </li>
-            </ul>
-          </div>
+              Login
+            </Link>
+          )}
         </div>
       </header>
     </>

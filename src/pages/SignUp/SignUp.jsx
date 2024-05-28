@@ -2,16 +2,20 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { FaEye, FaGithub, FaGoogle } from "react-icons/fa";
 import { PiEyeClosedFill } from "react-icons/pi";
 import formImg from "../../assets/others/authentication1.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser } = useContext(AuthContext);
+  const { createUser, userProfileUpdate } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -22,13 +26,30 @@ const SignUp = () => {
     },
   });
   const onSubmit = async (data) => {
+    const name = data.name;
+    const photo = data.photo;
     const email = data.email;
     const password = data.password;
     try {
       const response = await createUser(email, password);
       const user = response.user;
+      updateProfile(user, { displayName: name, photoURL: photo });
+      Swal.fire({
+        title: "Success!",
+        text: `Welcome ${user.displayName ? user.displayName : user.email}`,
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
+      reset();
+      navigate(location?.state ? location.state : "/");
     } catch (error) {
       console.error("Error", error);
+      Swal.fire({
+        title: "Error!",
+        text: `${error.message}`,
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
     }
   };
 

@@ -2,7 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { FaEye, FaGithub, FaGoogle } from "react-icons/fa";
 import { PiEyeClosedFill } from "react-icons/pi";
 import formImg from "../../assets/others/authentication1.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import {
   loadCaptchaEnginge,
@@ -16,7 +17,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const { logInUser } = useContext(AuthContext);
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -29,6 +32,15 @@ const Login = () => {
     try {
       const response = await logInUser(email, password);
       const user = response.user;
+      Swal.fire({
+        title: "Success!",
+        text: `Welcome back ${
+          user?.displayName ? user.displayName : user.email
+        }`,
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
+      navigate(from, { replace: true });
     } catch (error) {
       console.error("Error", error);
     }

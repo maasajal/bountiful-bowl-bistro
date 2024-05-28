@@ -1,5 +1,5 @@
-.swiper-button-prev,
-.swiper-button-next {
+#order-tab .swiper-button-prev,
+#order-tab .swiper-button-next {
   top: auto;
   bottom: 0;
   background-color: #bb8506;
@@ -9,13 +9,13 @@
   height: 60px;
   width: 60px;
 }
-.swiper-button-prev {
+#order-tab .swiper-button-prev {
   left: 0;
 }
-.swiper-button-next {
+#order-tab .swiper-button-next {
   left: 15%;
 }
-.swiper-pagination-fraction {
+#order-tab .swiper-pagination-fraction {
   left: 9%;
   width: auto;
 }

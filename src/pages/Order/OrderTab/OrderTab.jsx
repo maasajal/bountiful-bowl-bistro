@@ -29,6 +29,7 @@ const OrderTab = ({ items }) => {
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
+        id="order-tab"
       >
         {pages.map((pageItems, index) => (
           <SwiperSlide key={index}>
@@ -39,13 +40,6 @@ const OrderTab = ({ items }) => {
             </div>
           </SwiperSlide>
         ))}
-        {/* <SwiperSlide>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-5">
-            {items.map((item) => (
-              <FoodItem key={item._id} item={item} />
-            ))}
-          </div>
-        </SwiperSlide> */}
       </Swiper>
     </>
   );
