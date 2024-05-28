@@ -72,12 +72,15 @@ const NavBar = () => {
           <ul className="menu menu-horizontal hidden lg:flex uppercase">
             {navLinks}
           </ul>
-          <div className="relative border bg-[#EEFF25] text-black rounded-full">
+          <Link
+            to="/dashboard/cart"
+            className="relative border bg-[#EEFF25] text-black rounded-full"
+          >
             <FaShoppingCart className="p-1 text-3xl" />
-            <div className="badge badge-secondary absolute top-5 left-3">
+            <span className="badge badge-secondary absolute top-5 left-3">
               {cart.length}{" "}
-            </div>
-          </div>
+            </span>
+          </Link>
           {user ? (
             <>
               <Link
