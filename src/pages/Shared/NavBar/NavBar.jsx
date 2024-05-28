@@ -1,11 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import profilePic from "../../../assets/logo.png";
 import logo from "../../../assets/bbb-logo.png";
+import { FaShoppingCart } from "react-icons/fa";
+import useAuth from "../../../hooks/useAuth";
 import "./Navbar.css";
-import { useContext } from "react";
-import { AuthContext } from "../../../providers/AuthProvider";
+import useCart from "../../../hooks/useCart";
+
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
+  const [cart] = useCart();
+
   const handleSignOut = () => {
     logOut()
       .then(() => {
@@ -68,8 +72,11 @@ const NavBar = () => {
           <ul className="menu menu-horizontal hidden lg:flex uppercase">
             {navLinks}
           </ul>
-          <div className="w-10 rounded-full">
-            <img src={profilePic} alt="Cart" />
+          <div className="relative border bg-[#EEFF25] text-black rounded-full">
+            <FaShoppingCart className="p-1 text-3xl" />
+            <div className="badge badge-secondary absolute top-5 left-3">
+              {cart.length}{" "}
+            </div>
           </div>
           {user ? (
             <>

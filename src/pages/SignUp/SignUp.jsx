@@ -33,7 +33,7 @@ const SignUp = () => {
     try {
       const response = await createUser(email, password);
       const user = response.user;
-      updateProfile(user, { displayName: name, photoURL: photo });
+      userProfileUpdate(user, { displayName: name, photoURL: photo });
       Swal.fire({
         title: "Success!",
         text: `Welcome ${user.displayName ? user.displayName : user.email}`,
