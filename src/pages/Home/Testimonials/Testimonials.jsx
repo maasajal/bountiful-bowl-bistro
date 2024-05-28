@@ -14,7 +14,7 @@ const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
   const getReviewsData = async () => {
     try {
-      const { data } = await axios.get("./reviews.json");
+      const { data } = await axios.get("http://localhost:5555/reviews");
       setReviews(data);
     } catch (error) {
       console.error("error", error);

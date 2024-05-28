@@ -1,0 +1,21 @@
+.swiper-button-prev,
+.swiper-button-next {
+  top: auto;
+  bottom: 0;
+  background-color: #bb8506;
+  color: black;
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+.swiper-button-prev {
+  left: 0;
+}
+.swiper-button-next {
+  left: 15%;
+}
+.swiper-pagination-fraction {
+  left: 9%;
+  width: auto;
+}
