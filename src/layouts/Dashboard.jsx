@@ -2,101 +2,127 @@ import { NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/bbb-logo.png";
 import {
   FaBook,
-  FaCalendar,
   FaCalendarAlt,
   FaHome,
-  FaListUl,
+  FaList,
   FaRegCalendarCheck,
   FaShoppingBag,
   FaShoppingCart,
-  FaUser,
+  FaUsers,
+  FaUtensils,
   FaWallet,
 } from "react-icons/fa";
-import { CiForkAndKnife } from "react-icons/ci";
 import { TiThMenu } from "react-icons/ti";
 import { MdEmail } from "react-icons/md";
 import { FaFaceGrinStars } from "react-icons/fa6";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
+  const [isAdmin] = useAdmin();
   return (
     <>
       <div className="flex">
         <div className="w-64 min-h-screen px-8 pt-12 bg-[#D1A054] space-y-8">
           <img src={logo} alt="company logo" className="mb-16" />
-          <ul className="uppercase space-y-4">
-            <li key="userHome" className="hover:text-white">
-              <NavLink
-                to="/dashboard/userHome"
-                className="flex items-center gap-2"
-              >
-                <FaHome /> User Home
-              </NavLink>
-            </li>
-            <li key="reservation" className="hover:text-white">
-              <NavLink
-                to="/dashboard/reservation"
-                className="flex items-center gap-2"
-              >
-                <FaCalendarAlt /> Reservation
-              </NavLink>
-            </li>
-            <li key="paymentHistory" className="hover:text-white">
-              <NavLink
-                to="/dashboard/paymentHistory"
-                className="flex items-center gap-2"
-              >
-                <FaWallet /> Payment History
-              </NavLink>
-            </li>
-            <li key="cart" className="hover:text-white">
-              <NavLink to="/dashboard/cart" className="flex items-center gap-2">
-                <FaShoppingCart /> My Cart
-              </NavLink>
-            </li>
-            <li key="review" className="hover:text-white">
-              <NavLink
-                to="/dashboard/addReview"
-                className="flex items-center gap-2"
-              >
-                <FaFaceGrinStars /> Add Review
-              </NavLink>
-            </li>
-            <li key="booking" className="hover:text-white">
-              <NavLink
-                to="/dashboard/booking"
-                className="flex items-center gap-2"
-              >
-                <FaRegCalendarCheck /> My Booking
-              </NavLink>
-            </li>
-          </ul>
-          {/* <ul className="uppercase space-y-4">
-            <li key="admin-home" className="hover:text-white">
-              <NavLink to="/dashboard" className="flex items-center gap-2">
-                <FaHome /> Admin Home
-              </NavLink>
-            </li>
-            <li key="add-items" className="hover:text-white">
-              <NavLink to="/dashboard/additem" className="flex items-center gap-2">
-                <CiForkAndKnife /> Add Items
-              </NavLink>
-            </li>
-            <li key="manage-items" className="hover:text-white">
-              <NavLink to="/dashboard/manageitems" className="flex items-center gap-2">
-                <FaListUl /> Manage Items
-              </NavLink>
-            </li>
-            <li key="manage-bookings" className="hover:text-white">
-              <NavLink to="/dashboard/managebookings" className="flex items-center gap-2">
-                <FaBook /> Manage Bookings
-              </NavLink>
-            </li>
-            <li key="all-users" className="hover:text-white">
-              <NavLink to="/dashboard/allusers" className="flex items-center gap-2">
-                <FaUser /> All Users
-              </NavLink>
-            </li>
-          </ul> */}
+          {isAdmin ? (
+            <>
+              <ul className="uppercase space-y-4">
+                <li key="admin-home" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/adminHome"
+                    className="flex items-center gap-2"
+                  >
+                    <FaHome /> Admin Home
+                  </NavLink>
+                </li>
+                <li key="add-items" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/addItems"
+                    className="flex items-center gap-2"
+                  >
+                    <FaUtensils /> Add Items
+                  </NavLink>
+                </li>
+                <li key="manage-items" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/manageItems"
+                    className="flex items-center gap-2"
+                  >
+                    <FaList /> Manage Items
+                  </NavLink>
+                </li>
+                <li key="manage-bookings" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/manageBookings"
+                    className="flex items-center gap-2"
+                  >
+                    <FaBook /> Manage Bookings
+                  </NavLink>
+                </li>
+                <li key="all-users" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/allUsers"
+                    className="flex items-center gap-2"
+                  >
+                    <FaUsers /> All Users
+                  </NavLink>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <>
+              <ul className="uppercase space-y-4">
+                <li key="userHome" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/userHome"
+                    className="flex items-center gap-2"
+                  >
+                    <FaHome /> User Home
+                  </NavLink>
+                </li>
+                <li key="reservation" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/reservation"
+                    className="flex items-center gap-2"
+                  >
+                    <FaCalendarAlt /> Reservation
+                  </NavLink>
+                </li>
+                <li key="paymentHistory" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/paymentHistory"
+                    className="flex items-center gap-2"
+                  >
+                    <FaWallet /> Payment History
+                  </NavLink>
+                </li>
+                <li key="cart" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/cart"
+                    className="flex items-center gap-2"
+                  >
+                    <FaShoppingCart /> My Cart
+                  </NavLink>
+                </li>
+                <li key="review" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/addReview"
+                    className="flex items-center gap-2"
+                  >
+                    <FaFaceGrinStars /> Add Review
+                  </NavLink>
+                </li>
+                <li key="booking" className="hover:text-white">
+                  <NavLink
+                    to="/dashboard/booking"
+                    className="flex items-center gap-2"
+                  >
+                    <FaRegCalendarCheck /> My Booking
+                  </NavLink>
+                </li>
+              </ul>
+            </>
+          )}
           <hr />
           <ul className="uppercase space-y-4">
             <li key="home" className="hover:text-white">

@@ -9,11 +9,15 @@ import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Secret/Secret";
 import Dashboard from "../layouts/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -45,6 +49,16 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // Admin Dashboard
+      {
+        path: "/dashboard/allUsers",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      // User Dashboard
       {
         path: "cart",
         element: <Cart />,
