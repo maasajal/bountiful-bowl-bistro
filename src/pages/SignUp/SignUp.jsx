@@ -1,5 +1,5 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { FaEye, FaGithub, FaGoogle } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { FaEye } from "react-icons/fa";
 import { PiEyeClosedFill } from "react-icons/pi";
 import formImg from "../../assets/others/authentication1.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +15,7 @@ const SignUp = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -53,7 +55,7 @@ const SignUp = () => {
           timer: 1500,
         });
         reset();
-        navigate(location?.state ? location.state : "/");
+        navigate(from, { replace: true });
       }
     } catch (error) {
       console.error("Error", error);
@@ -178,14 +180,7 @@ const SignUp = () => {
                 </Link>
               </p>
               <p>Or Sign up with</p>
-              <div className="px-8 mb-6 flex justify-center gap-4">
-                <button className="btn btn-outline rounded-full">
-                  <FaGoogle className="text-lg" />
-                </button>
-                <button className="btn btn-outline rounded-full">
-                  <FaGithub className="text-lg" />
-                </button>
-              </div>
+              <SocialLogin />
             </div>
           </div>
         </div>

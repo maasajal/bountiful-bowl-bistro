@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { FaEye, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { PiEyeClosedFill } from "react-icons/pi";
 import formImg from "../../assets/others/authentication1.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../../components/SocialLogin";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -125,14 +126,7 @@ const Login = () => {
                 </Link>
               </p>
               <p>Or Sign in with</p>
-              <div className="px-8 mb-6 flex justify-center gap-4">
-                <button className="btn btn-outline rounded-full">
-                  <FaGoogle className="text-lg" />
-                </button>
-                <button className="btn btn-outline rounded-full">
-                  <FaGithub className="text-lg" />
-                </button>
-              </div>
+              <SocialLogin />
             </div>
           </div>
         </div>
